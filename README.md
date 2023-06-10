@@ -1,24 +1,54 @@
-# 3_projekt
-The third project at the Engeto Academy for Python
+# Engeto 2021 projekt 3
 
-# Popis projektu
-Projekt slouzi k extrahovani vysledku voleb do snemovny CR v roce 2017.
+Třetí Python projekt do Python Akademie na Engetu
 
-# Instalace knihoven
-Knihovny pouzite v kodu jsou ulozeny v souboru requirements.txt
+## Popis projektu
 
-# Spusteni projektu
-python election_scraper.py "https://volby.cz/pls/ps2017nss/ps32?xjazyk=CZ&xkraj=12&xnumnuts=7103" "Prostejov_volby.csv"
+Tento projekt slouží k získání výsledků z parlamentních voleb 2017z webových stránek volby.cz.
 
-# Ukazka projektu
-Vysledky hlasovani pro vybrany okres Prostejov
-  1. argument:"https://volby.cz/pls/ps2017nss/ps32?xjazyk=CZ&xkraj=12&xnumnuts=7103"
-  2. argument: "Prostejov_volby.csv"
+## Instalace knihoven
 
-Prubeh stahovani:
+Použité knihovny v tomto projektu jsou uloženy v souboru `requirements.txt.` 
+Pro instalaci je vhodné použít nové virtuální prostředí v prostředí PyCharm a pomocí terminálu nainstalovat knihovny příkazem:
 
-STAHUJI DATA Z VYBRANEHO URL: https://volby.cz/pls/ps2017nss/ps32?xjazyk=CZ&xkraj=12&xnumnuts=7103
+`pip install -r requirements.txt`
 
-UKLADAM DO SOUBORU: Prostejov_volby.csv
+## Spuštění projektu
 
-UKONCUJI election-scraper
+Celý skript je uložen do souboru `election_scraper.py`. Pro spuštění projektu je třeba využít příkazového řádku v terminálu. Ke spuštění je třeba dvou argumentů, první argument je URL adresa vybraného územního celku a druhý argument je název csv souboru, do kterého chceme uložit získaná data. Do terminálu tedy zadáme příkaz:
+
+`python projekt3.py <URL adresa uzemniho celku> <nazev csv souboru pro zapsani>
+`
+
+## Praktický příklad spuštěného projektu:
+Pro ukázku si uvedeme praktický příklad jak spustit skript a jak vypadá následné spuštění programu.
+Zajímají nás třeba výsledky pro okres Prostějov, do terminálu se tedy zadá:
+
+```
+python projekt3.py "https://volby.cz/pls/ps2017nss/ps32?xjazyk=CZ&xkraj=12&xnumnuts=7103" "vysledky_prostejov.csv"
+```
+Po úspěšném spuštění nám program vypíše následující zprávy: 
+
+
+```
+Stahuji data z vybrané URL: https://volby.cz/pls/ps2017nss/ps32?xjazyk=CZ&xkraj=12&xnumnuts=7103
+
+Ukládám výsledky do souboru: vysledky_prostejov.csv
+
+Data zapsaná úspěšně do tabulky
+```
+
+Částěčný výstup programu, který se zapíše do souboru:
+
+```
+kod obce, nazev obce, voliči v seznamu, vydané obálky, platné hlasy,...
+
+589268,	Bedihošť, 834, 527, 524, 51, 0, 0, 28, 1, 13, 123, 2, 2, 14, 1, 0, 34, 0, 6, 140, 0, 0, 26, 0, 0, 0, 0, 82, 1
+```
+
+Při nesprávném zadání příkazu (špatná URL adresa, chybějící argument,...) se nám vypíše upozornění a program je zastaven:
+
+```
+Musíte zadat správnou URL adresu a název CSV souboru
+---EXIT---
+```
